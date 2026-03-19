@@ -1,0 +1,55 @@
+version: 2
+
+sources:
+  - name: northwind_raw
+    database: AIRBYTE_DATABASE
+    schema: AIRBYTE_SCHEMA
+
+    tables:
+      - name: CATEGORIES
+        columns:
+          - name: CATEGORY_ID
+            tests:
+              - not_null
+              - unique
+
+          - name: CATEGORY_NAME
+            tests:
+              - not_null
+
+      - name: PRODUCTS
+        columns:
+          - name: PRODUCT_ID
+            tests:
+              - not_null
+              - unique
+
+          - name: PRODUCT_NAME
+            tests:
+              - not_null
+
+          - name: CATEGORY_ID
+            tests:
+              - not_null
+
+          - name: UNIT_PRICE
+            tests:
+              - not_null
+
+      - name: ORDER_DETAILS
+        columns:
+          - name: ORDER_ID
+            tests:
+              - not_null
+
+          - name: PRODUCT_ID
+            tests:
+              - not_null
+
+          - name: QUANTITY
+            tests:
+              - not_null
+
+          - name: UNIT_PRICE
+            tests:
+              - not_null
